@@ -4,9 +4,9 @@
 
 int main()
 {
-	UniformTimeDiscretization time;
+	UniformTimeDiscretization discr(0.1, 10);
 	Equation eq;
-	Problem pb(eq, &time);
+	Problem pb(eq, &discr);
 
 	pb.solve();
 	return 0;

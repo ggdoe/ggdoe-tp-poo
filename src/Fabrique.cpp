@@ -2,15 +2,11 @@
 
 Fabrique::Fabrique(const std::string discr_str)
 {
-	switch(std::tolower(discr_str)){
-		// case "uniform":
-		// 	choice = Discr_type::UniformDiscr;
-		// 	break;
-		default :
-			choice = Discr_type::UniformDiscr;
-			break;
-
-	}
+	if(discr_str == "gaussian")
+		choice = Discr_type::Gaussian;
+		// not implemented
+	else
+		choice = Discr_type::UniformDiscr;
 }
 
 Problem Fabrique::get(const Equation &eq)
@@ -20,7 +16,11 @@ Problem Fabrique::get(const Equation &eq)
 	switch(choice){
 		case Discr_type::UniformDiscr:
 			return Problem(eq, new UniformTimeDiscretization());
+		case Discr_type::Gaussian:
+			// not implemented
+			return Problem(eq, new UniformTimeDiscretization());
+		default :
+			return Problem(eq, new UniformTimeDiscretization());
 	}
-
 
 }

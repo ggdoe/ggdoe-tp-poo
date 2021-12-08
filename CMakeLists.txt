@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(out src/main.cpp src/Problem.cpp src/Equation.cpp 
                src/ITimeDiscretization.cpp src/UniformTimeDiscretization.cpp
-               src/Fabrique.cpp )
+                src/Variable.cpp )
 
 # add_subdirectory(mylib)
 

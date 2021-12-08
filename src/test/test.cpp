@@ -3,7 +3,7 @@
 #include "Equation.h"
 #include "ITimeDiscretization.h"
 #include "UniformTimeDiscretization.h"
-#include "FabriqueDiscretization.h"
+#include "Fabrique.h"
 
 TEST(UnitaryTest,ProblemTest){
 	// UniformTimeDiscretization time;

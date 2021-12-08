@@ -7,7 +7,7 @@
 #include "ITimeDiscretization.h"
 
 class Fabrique {
-	enum class Discr_type { UniformDiscr };
+	enum class Discr_type { UniformDiscr, Gaussian };
 	Discr_type choice;
 public:
 	Fabrique(const std::string discr_str);
