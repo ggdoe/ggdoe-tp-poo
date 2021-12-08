@@ -4,13 +4,15 @@
 #include "ITimeDiscretization.h"
 
 class UniformTimeDiscretization : public ITimeDiscretization {
-	double pas;
+	double tmin;
+	double tmax;
 	unsigned int size;
 public:
-	UniformTimeDiscretization(double _pas, unsigned int _size);
+	UniformTimeDiscretization(double _tmax, unsigned int _size, 
+												double _tmin = 0);
 	unsigned int nb_points() override;
 	unsigned int iteration(double tn) override;
-	double get_pas() override;
+	double get_pas(double tn) override;
 };
 
 #endif

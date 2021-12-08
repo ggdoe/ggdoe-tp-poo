@@ -14,7 +14,7 @@ void Problem::solve(){
 	double t = 0;
 	for(double i = 0; i < discr->nb_points(); i++){
 		eq.compute(t, 0.1, v);
-		t += discr->get_pas();
+		t += discr->get_pas(t);
 	}
 }
 

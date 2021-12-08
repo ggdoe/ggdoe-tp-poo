@@ -1,8 +1,8 @@
 #include "UniformTimeDiscretization.h"
 
-UniformTimeDiscretization::UniformTimeDiscretization(double _pas, unsigned int _size)
-        : pas(_pas), size(_size) {
-
+UniformTimeDiscretization::UniformTimeDiscretization(double _tmax, 
+                                unsigned int _size, double _tmin)
+        : size(_size), tmax(_tmax), tmin(_tmin) {
 }
 
 unsigned int UniformTimeDiscretization::nb_points(){
@@ -10,9 +10,9 @@ unsigned int UniformTimeDiscretization::nb_points(){
 }
 
 unsigned int UniformTimeDiscretization::iteration(double tn){
-    return static_cast<unsigned int>(tn/pas);
+    return static_cast<unsigned int>(tn/get_pas(tn));
 }
 
-double  UniformTimeDiscretization::get_pas(){
-    return pas;
+double UniformTimeDiscretization::get_pas(double tn){
+    return (tmax-tmin)/size;
 }
