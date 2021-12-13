@@ -2,6 +2,7 @@
 #include "Equation.h"
 #include "Problem.h"
 #include "Fabrique.h"
+#include "Integrators.h"
 
 
 int main()
@@ -10,8 +11,9 @@ int main()
 	// Problem pb(eq, &discr);
 
 	Fabrique fb("uniform");
-	Equation eq;
+	Equation eq([](double t){ return t*t;});
 	Problem pb = fb.get(eq, 1, 10);
 	pb.solve();
+	
 	return 0;
 }

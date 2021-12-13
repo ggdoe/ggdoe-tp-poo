@@ -11,11 +11,16 @@ void Problem::solve(){
 
 	std::cout << "--- Solve problem ---" << std::endl;
 
-	double t = 0;
+	double t = -discr->get_pas(0);
 	for(double i = 0; i < discr->nb_points(); i++){
-		eq.compute(t, 0.1, v);
 		t += discr->get_pas(t);
+		eq.compute_by_integrator<RungeKuttaIntegrator>(t, discr->get_pas(t), v);
+		// eq.compute(t, 0.1, v);
 	}
+	std::cout << "--- End solve ---" << std::endl;
+
+	v.print_at_time(t);
+	// std::cout << v(t) << std::endl;
 }
 
 Problem::~Problem(){

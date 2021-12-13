@@ -14,5 +14,5 @@ unsigned int UniformTimeDiscretization::iteration(double tn){
 }
 
 double UniformTimeDiscretization::get_pas(double tn){
-    return (tmax-tmin)/size;
+    return (tmax-tmin)/(size-1);
 }
