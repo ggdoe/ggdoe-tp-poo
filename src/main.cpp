@@ -9,19 +9,22 @@ int main()
 {
 	// UniformTimeDiscretization discr(2, 10);
 	// Problem pb(eq, &discr);
-
 	Fabrique fb("uniform");
-	//eq.initial_value = 1.0;
+	//fb.eq.initial_value = 1.0;
 
 	Problem pb = fb.get(1, 100);
-	pb.save_in_file("t.data"); 
-	pb.solve(); //data are saved in /data/ folder
+	// pb.save_in_file("t.data");
+	// pb.solve(); //data are saved in /data/ folder
 
 	fb.set_equation([](double t){ return t*t;});
-	pb = fb.get(1, 100);
-	pb.save_in_file("tt.data"); 
+	pb = fb.get(1, 10e6);
+	// pb.save_in_file("tt.data"); 
 	pb.solve(); //data are saved in /data/ folder
 
+	// fb.set_equation([](double t){ return 1;});
+	// pb = fb.get(1, 100);
+	// pb.save_in_file("1.data"); 
+	// pb.solve(); //data are saved in /data/ folder
 	
 	return 0;
 }

@@ -8,9 +8,9 @@
 
 class Fabrique {
 	enum class Discr_type { UniformDiscr, NonUniformTimeDiscretization };
+public:
 	Discr_type choice;
 	Equation eq;
-public:
 	Fabrique(const std::string discr_str);
 	Problem get(double tmax, unsigned int size, double tmin = 0);
 	template<class Lambda>

@@ -7,11 +7,10 @@
 #include <iostream>
 
 class Equation {
-	// static inline auto m_f = [](double t){return t;};
 public:
 	std::function<double(double)> m_f;
 	double initial_value = 0;
-	
+
 	template<class Lambda>
 	Equation(Lambda f){
 		m_f = f;

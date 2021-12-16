@@ -5,6 +5,7 @@
 #include "Variable.h"
 #include "Equation.h"
 #include "ITimeDiscretization.h"
+#include "Timer.h"
 
 class Problem {
 	Equation *eq;
