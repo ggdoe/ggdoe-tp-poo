@@ -9,16 +9,15 @@ Fabrique::Fabrique(const std::string discr_str)
 		choice = Discr_type::UniformDiscr;
 }
 
-Problem Fabrique::get(const Equation &eq, double tmax, 
-						unsigned int size, double tmin)
+Problem Fabrique::get(double tmax, unsigned int size, double tmin)
 {
 	switch(choice){
 		case Discr_type::NonUniformTimeDiscretization:
 			// not implemented
-			return Problem(eq, new UniformTimeDiscretization(tmax, size, tmin));
+			return Problem(&eq, new UniformTimeDiscretization(tmax, size, tmin));
 		case Discr_type::UniformDiscr:
 		default :
-			return Problem(eq, new UniformTimeDiscretization(tmax, size, tmin));
+			return Problem(&eq, new UniformTimeDiscretization(tmax, size, tmin));
 	}
 
 }

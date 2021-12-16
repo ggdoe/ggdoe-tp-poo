@@ -17,8 +17,13 @@ void Variable::print_at_time(double t_n){
 }
 
 void Variable::print_in_file(std::string filename){
-    std::ofstream file(filename);
-
+    
+    // save data in data folder
+    std::ofstream file("../data/" + filename);
+    if(!file){
+        std::cout << "### Cannot write in : ./data/"<< filename << std::endl;
+        return;
+    }
     // for(auto x : xn)
     //     file << 
 
@@ -28,6 +33,7 @@ void Variable::print_in_file(std::string filename){
         file << t << '\t' << xn[i] << std::endl;
 	}
 
+    std::cout << "--- Data written in : ./data/"<< filename << std::endl;
     file.close();
 }
 

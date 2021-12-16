@@ -10,7 +10,7 @@ unsigned int UniformTimeDiscretization::nb_points(){
 }
 
 unsigned int UniformTimeDiscretization::iteration(double tn){
-    return static_cast<unsigned int>(tn/get_pas(tn));
+    return static_cast<unsigned int>((tn-tmin)/get_pas(tn));
 }
 
 double UniformTimeDiscretization::get_pas(double tn){

@@ -11,9 +11,17 @@ int main()
 	// Problem pb(eq, &discr);
 
 	Fabrique fb("uniform");
-	Equation eq([](double t){ return t*t;});
-	Problem pb = fb.get(eq, 1, 10);
-	pb.solve();
+	//eq.initial_value = 1.0;
+
+	Problem pb = fb.get(1, 100);
+	pb.save_in_file("t.data"); 
+	pb.solve(); //data are saved in /data/ folder
+
+	fb.set_equation([](double t){ return t*t;});
+	pb = fb.get(1, 100);
+	pb.save_in_file("tt.data"); 
+	pb.solve(); //data are saved in /data/ folder
+
 	
 	return 0;
 }

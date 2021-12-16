@@ -7,9 +7,11 @@
 #include <iostream>
 
 class Equation {
-	std::function<double(double)> m_f;
 	// static inline auto m_f = [](double t){return t;};
 public:
+	std::function<double(double)> m_f;
+	double initial_value = 0;
+	
 	template<class Lambda>
 	Equation(Lambda f){
 		m_f = f;
@@ -27,8 +29,8 @@ public:
 	void compute_by_integrator(double t, double d_t, Variable &v){
 		myIntegrator::update(t, d_t, v, m_f);
 
-		std::cout << "--- compute equation at time : " << t
-				<< " --- value = " << v(t) << std::endl;
+		/*std::cout << "--- compute equation at time : " << t
+				<< " --- value = " << v(t) << std::endl;*/
 	}
 	
 	void compute_initial_condition(Variable &v);
