@@ -17,6 +17,7 @@ public:
 	void save_in_file(std::string _filename);
 	~Problem();
 	void solve();
+	void solve_parallel();
 };
 
 #endif

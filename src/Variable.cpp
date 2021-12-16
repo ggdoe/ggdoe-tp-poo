@@ -6,10 +6,9 @@ Variable::Variable(ITimeDiscretization *_discr)
 }
 
 double& Variable::operator()(double t_n){
-    // const double pas = discr->get_pas(t_n);
-
     return xn[discr->iteration(t_n)];
 }
+
 
 void Variable::print_at_time(double t_n){
     std::cout << "--- compute equation at time : " << t_n

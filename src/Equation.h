@@ -8,7 +8,7 @@
 
 class Equation {
 public:
-	std::function<double(double)> m_f;
+	std::function<double(double, double)> m_f;
 	double initial_value = 0;
 
 	template<class Lambda>
@@ -16,7 +16,7 @@ public:
 		m_f = f;
 	}
 	Equation() {
-		m_f = [](double t){ return t;};
+		m_f = [](double t, double y){ return t;};
 	}
 
 	void compute(double t, double d_t, Variable &v);

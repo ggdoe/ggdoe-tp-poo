@@ -19,7 +19,7 @@ void Equation::compute(double t, double d_t, Variable &v){
 // }
 
 void Equation::compute_initial_condition(Variable &v){
-	v(0) = initial_value;
+	v(0.0) = initial_value;
 }
 
 // template<class myIntegrator>
