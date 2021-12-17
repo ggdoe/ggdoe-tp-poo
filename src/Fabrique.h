@@ -17,13 +17,14 @@ public:
 
 	template<class Lambda>
 	void set_equation(Lambda &&f){
-		eq.m_f = [&f](double t, Variable &v){return f(t);};
+		eq.m_f = [&f](double t, double y){return f(t);};
 	}
 	
 	template<class Lambda>
 	void set_equation_diff(Lambda &&f){
 		eq.m_f = f;
 	}
+	void set_initial_value(double x0);
 };
 
 #endif

@@ -8,6 +8,8 @@
 #include "Timer.h"
 
 class Problem {
+	using My_Integrator = RungeKuttaIntegrator;
+
 	Equation *eq;
 	ITimeDiscretization *discr;
 	std::string filename;

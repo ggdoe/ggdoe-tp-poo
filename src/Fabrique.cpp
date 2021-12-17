@@ -21,3 +21,7 @@ Problem Fabrique::get(double tmax, unsigned int size, double tmin)
 	}
 
 }
+
+void Fabrique::set_initial_value(double x0){
+	eq.initial_value = x0;
+}

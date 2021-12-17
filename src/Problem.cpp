@@ -27,7 +27,7 @@ void Problem::solve(){
 	timer_boucle.start();
 	for(double i = 0; i < discr->nb_points(); i++){
 		t += discr->get_pas(t);
-		eq->compute_by_integrator<EulerIntegrator>(t, discr->get_pas(t), v);
+		eq->compute_by_integrator<My_Integrator>(t, discr->get_pas(t), v);
 		// eq.compute(t, 0.1, v);
 	}
 	timer_boucle.stop();
@@ -57,7 +57,7 @@ void Problem::solve_parallel(){
 	timer_boucle.start();
 	for(double i = 0; i < discr->nb_points(); i++){
 		t += discr->get_pas(t);
-		eq->compute_by_integrator<EulerIntegrator>(t, discr->get_pas(t), v);
+		eq->compute_by_integrator<My_Integrator>(t, discr->get_pas(t), v);
 	}
 	timer_boucle.stop();
 	// std::cout << "--- End solve ---" << std::endl;
