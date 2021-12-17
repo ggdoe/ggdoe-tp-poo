@@ -13,8 +13,10 @@ class Problem {
 	Equation *eq;
 	ITimeDiscretization *discr;
 	std::string filename;
-
+	
 public:
+	double sol = 0;
+
 	Problem() = default;
 	Problem(Equation *_eq, ITimeDiscretization *_discr);
 	void save_in_file(std::string _filename);

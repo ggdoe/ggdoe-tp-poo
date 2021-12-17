@@ -50,7 +50,8 @@ void Problem::solve(const std::string &integrator){
 	// std::cout << "--- End solve ---" << std::endl;
 
 	v.print_at_time(t);
-
+	sol = v(t);
+	
 	timer_boucle.print("boucle en temps");
 	timer_solve.stop();
 	timer_solve.print("fct solve");
