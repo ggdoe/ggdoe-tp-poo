@@ -1,14 +1,12 @@
 #include "gtest/gtest.h"
-#include "Problem.h"
-#include "Equation.h"
-#include "ITimeDiscretization.h"
-#include "UniformTimeDiscretization.h"
+
 #include "Fabrique.h"
 
 TEST(UnitaryTest,ProblemTest){
-	// UniformTimeDiscretization time;
-	// Equation eq;
-	// Problem pb(eq, &time);
-	
-	// pb.solve();
+	Fabrique fb("uniform");
+	Problem pb;
+	fb.set_initial_value(1.0);
+	fb.set_equation([](double t){ return t;});
+	pb = fb.get(1, 10e4);
+	pb.solve("euler");
 }

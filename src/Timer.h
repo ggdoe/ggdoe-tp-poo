@@ -11,7 +11,7 @@ public:
 	Timer() = default;
 	void start();
     void stop();
-    void print(std::string string);
+    void print(const std::string &string);
 };
 
 #endif

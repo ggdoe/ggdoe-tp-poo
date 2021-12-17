@@ -18,9 +18,9 @@ int main()
 
 	pb = fb.get(2.0 * M_PI, 10e4);
 	// pb = fb.get(1, 10e5, -1);
-	pb.save_in_file("exp-euler.data"); 		// data are saved in /data/ folder
+	pb.save_in_file("slv-euler.data"); 		// data are saved in /data/ folder
 	pb.solve("euler");
-	pb.save_in_file("exp-rk4.data"); 		// data are saved in /data/ folder
+	pb.save_in_file("slv-rk4.data"); 		// data are saved in /data/ folder
 	pb.solve("rk4"); 
 		
 	return 0;

@@ -1,3 +1,4 @@
+# py plot_data.py slv-euler.data slv-rk4.data
 import sys
 import matplotlib.pyplot as plt
 import numpy as np
@@ -11,12 +12,12 @@ fig = plt.figure()
 ax = plt.subplot(111)
 
 plt.xlabel("t")
-plt.ylabel("x")
+plt.ylabel("f(t)")
 
 sys.argv.pop(0) # on retire l'executable de la liste des args
 
 for filename in sys.argv:
-    print("load : "+filename)
+    print("load : " + filename)
     array = np.loadtxt("./data/" + filename)
     t = array[:,0]
     x = array[:,1]
