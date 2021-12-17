@@ -18,10 +18,10 @@ enable_testing()
 
 find_package(GTest REQUIRED)
 
-add_executable(mytest src/test/test.cpp)
-target_include_directories(mytest PUBLIC GTEST_INCLUDE_DIR src/)
-target_link_libraries(mytest GTest::GTest GTest::Main)
+add_executable(mygtest src/test/test.cpp)
+target_include_directories(mygtest PUBLIC GTEST_INCLUDE_DIR src/)
+target_link_libraries(mygtest GTest::GTest GTest::Main)
 
 add_test(test_out out)
-gtest_discover_tests(mytest)
+gtest_discover_tests(mygtest)
 

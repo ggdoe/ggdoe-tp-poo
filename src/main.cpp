@@ -11,12 +11,13 @@ int main()
 	Fabrique fb("uniform");
 	Problem pb;
 
-	// fb.set_initial_value(1.0);
+	fb.set_initial_value(1.0);
 
-	// fb.set_equation([](double t){ return t*t;});
+	// fb.set_equation([](double t){ return t;});
 	fb.set_equation_diff([](double t, double y){ return cos(y*t*t);});
 
-	pb = fb.get(2.0 * M_PI, 10e5, 0.0);
+	pb = fb.get(2.0 * M_PI, 10e4);
+	// pb = fb.get(1, 10e5, -1);
 	pb.save_in_file("exp-euler.data"); 		// data are saved in /data/ folder
 	pb.solve("euler");
 	pb.save_in_file("exp-rk4.data"); 		// data are saved in /data/ folder

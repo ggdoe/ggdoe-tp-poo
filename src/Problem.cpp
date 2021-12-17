@@ -39,6 +39,7 @@ void Problem::solve(const std::string &integrator){
 		for(double i = 0; i < discr->nb_points(); i++){
 			t += discr->get_pas(t);
 			eq->compute_by_integrator<EulerIntegrator>(t, discr->get_pas(t), v);
+			// v.print_at_time(t);
 		}
 	else
 		for(double i = 0; i < discr->nb_points(); i++){

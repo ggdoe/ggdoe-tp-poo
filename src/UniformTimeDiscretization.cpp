@@ -10,7 +10,10 @@ unsigned int UniformTimeDiscretization::nb_points(){
 }
 
 unsigned int UniformTimeDiscretization::iteration(double tn){
-    return static_cast<unsigned int>((tn-tmin)/get_pas(tn));
+        // on ajoute 10e-10 pour éviter des problèmes d'arrondi à l'entier
+        // ex: pas = 0.010101, t = 0.141414 ==> int(t/pas) = 13 ou 14 ?
+    return static_cast<unsigned int>((tn-tmin + 10e-10)/get_pas(tn)); 
+    // return static_cast<unsigned int>((tn-tmin)/get_pas(tn));
 }
 
 const double UniformTimeDiscretization::get_pas(double tn) const{

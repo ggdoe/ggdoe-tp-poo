@@ -27,13 +27,18 @@ void Variable::print_in_file(std::string filename){
     // for(auto x : xn)
     //     file << 
 
-    double t = -discr->get_pas(0);
+    double t = discr->get_min()  -discr->get_pas(0);
 	for(double i = 0; i < discr->nb_points(); i++){
 		t += discr->get_pas(t);
-        file << t << '\t' << xn[i] << "\n"; // on ne flush pas dans la
+        file << t << '\t' << xn[i] << "\n"; // on ne flush pas dans la boucle
 
-        if(xn[i+1] == 0.0) // "triche", des 0 qui vienne de nulle part 
-            xn[i+1] = xn[i]; // colonnisent mon vecteur, après l'integration...
+        /*  // probleme de 0 résolue dans Uniform..::iteration(double)
+        if(i+1 < discr->nb_points() && xn[i+1] == 0.0) // "triche", des 0 qui vienne de nulle part 
+        {
+            // xn[i+1] = xn[i]; // colonnisent mon vecteur, après l'integration...
+            std::cout << "#### t :" << t +  discr->get_pas(t) << "\ti: " << i+1 << "\tx(i) :" << xn[i+1] << std::endl;
+        }
+        */
 	}
 
     std::cout << "--- Data written in : ./data/"<< filename << std::endl;
