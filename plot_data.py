@@ -7,6 +7,9 @@ if len(sys.argv) <= 1:
     print("Usage : plot_data.py data1.ex data2.ex ...")
     sys.exit(1)
 
+fig = plt.figure()
+ax = plt.subplot(111)
+
 plt.xlabel("t")
 plt.ylabel("x")
 
@@ -17,8 +20,10 @@ for filename in sys.argv:
     array = np.loadtxt("./data/" + filename)
     t = array[:,0]
     x = array[:,1]
-    plt.plot(t, x);
+    ax.plot(t, x, label=filename);
 
+plt.title("Plot data - Resolver EDO")
+ax.legend()
 plt.show()
 
 

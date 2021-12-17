@@ -4,30 +4,24 @@
 #include "Fabrique.h"
 #include "Integrators.h"
 
+#include <cmath>
 
 int main()
 {
-	// UniformTimeDiscretization discr(2, 10);
-	// Problem pb(eq, &discr);
 	Fabrique fb("uniform");
-	fb.set_initial_value(1.0);
+	Problem pb;
 
-	Problem pb = fb.get(1, 100);
-	// pb.save_in_file("t.data");
-	// pb.solve(); //data are saved in /data/ folder
+	// fb.set_initial_value(1.0);
 
 	// fb.set_equation([](double t){ return t*t;});
-	fb.set_equation_diff([](double t, double y){ return y;});
+	fb.set_equation_diff([](double t, double y){ return cos(y*t*t);});
 
-	pb = fb.get(1.0, 10e4);
-	// pb.save_in_file("tt.data"); 
-	pb.solve(); //data are saved in /data/ folder
-
-	// fb.set_equation([](double t, Variable& v){ return 1;});
-	// pb = fb.get(1, 100);
-	// pb.save_in_file("1.data"); 
-	// pb.solve(); //data are saved in /data/ folder
-	
+	pb = fb.get(2.0 * M_PI, 10e5, 0.0);
+	pb.save_in_file("exp-euler.data"); 		// data are saved in /data/ folder
+	pb.solve("euler");
+	pb.save_in_file("exp-rk4.data"); 		// data are saved in /data/ folder
+	pb.solve("rk4"); 
+		
 	return 0;
 }
 

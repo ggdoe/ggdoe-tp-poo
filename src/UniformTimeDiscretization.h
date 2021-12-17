@@ -12,7 +12,8 @@ public:
 												double _tmin = 0);
 	unsigned int nb_points() override;
 	unsigned int iteration(double tn) override;
-	double get_pas(double tn) override;
+	const double get_pas(double tn) const override;
+	const double get_min() const override;
 };
 
 #endif

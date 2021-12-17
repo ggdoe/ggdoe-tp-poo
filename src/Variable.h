@@ -7,14 +7,14 @@
 #include <fstream>
 
 class Variable {
-	std::vector<double> xn;
     ITimeDiscretization *discr;
-
+	std::vector<double> xn;
 public:
 	Variable(ITimeDiscretization *_discr);
     double& operator()(double t_n);
     void print_at_time(double t_n);
     void print_in_file(std::string filename);
+    double &get_first_elem();
 };
 
 #endif

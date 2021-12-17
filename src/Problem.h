@@ -15,6 +15,7 @@ class Problem {
 	std::string filename;
 
 public:
+	Problem() = default;
 	Problem(Equation *_eq, ITimeDiscretization *_discr);
 	void save_in_file(std::string _filename);
 	~Problem();

@@ -18,35 +18,33 @@ void Problem::solve(const std::string &integrator){
 	Timer timer_boucle, timer_solve;
 	timer_solve.start();
 
-	switch(integrator){
-		case "euler":
-			break;
-		case "rk4":
-		case "":
-			break;
-		default:
-			std::cout << "solve(std::string) usage :" << std::endl;
-			return ;
-	}
-
-	// else if(integrator == "rk4")
+	if(!integrator.empty() && integrator != "euler" && integrator != "rk4")
+		std::cout << "### solve(std::string integrator)" << std::endl 
+				  << "\tusage : integrator = \"\" or \"euler\" or \"rk4\"" << std::endl
+				  << "\t\tdefault : \"rk4\"" << std::endl;
 
 	Variable v(discr);
 	eq->compute_initial_condition(v);
-
-	std::cout << std::endl << "--- Solve problem ---" << std::endl;
-
-	double t = -discr->get_pas(0); // pour commencer à 0 et finir à tmax
+	
+	std::cout << std::endl << "--- Solve problem" << std::endl;
+	if(integrator == "euler")
+		std::cout << "---- Methode : Euler" << std::endl;
+	else
+		std::cout << "---- Methode : RungeKutta" << std::endl;
+	
+	double t = discr->get_min() - discr->get_pas(0); // pour commencer à 0 et finir à tmax
 	
 	timer_boucle.start();
-	for(double i = 0; i < discr->nb_points(); i++){
-		t += discr->get_pas(t);
-		if (integrator == "euler")
+	if (integrator == "euler")
+		for(double i = 0; i < discr->nb_points(); i++){
+			t += discr->get_pas(t);
 			eq->compute_by_integrator<EulerIntegrator>(t, discr->get_pas(t), v);
-		else if(integrator == "rk4")
+		}
+	else
+		for(double i = 0; i < discr->nb_points(); i++){
+			t += discr->get_pas(t);
 			eq->compute_by_integrator<My_Integrator>(t, discr->get_pas(t), v);
-		// eq.compute(t, 0.1, v);
-	}
+		}
 	timer_boucle.stop();
 	// std::cout << "--- End solve ---" << std::endl;
 

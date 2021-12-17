@@ -13,6 +13,10 @@ unsigned int UniformTimeDiscretization::iteration(double tn){
     return static_cast<unsigned int>((tn-tmin)/get_pas(tn));
 }
 
-double UniformTimeDiscretization::get_pas(double tn){
-    return (tmax-tmin)/(size-1);
+const double UniformTimeDiscretization::get_pas(double tn) const{
+    return (tmax-tmin)/static_cast<double>(size-1);
+}
+
+const double UniformTimeDiscretization::get_min() const{
+    return tmin;
 }
