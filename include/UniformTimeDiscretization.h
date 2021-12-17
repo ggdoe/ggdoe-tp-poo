@@ -10,8 +10,8 @@ class UniformTimeDiscretization : public ITimeDiscretization {
 public:
 	UniformTimeDiscretization(double _tmax, unsigned int _size, 
 												double _tmin = 0);
-	unsigned int nb_points() override;
-	unsigned int iteration(double tn) override;
+	unsigned int nb_points() const override;
+	unsigned int iteration(double tn) const override;
 	const double get_pas(double tn) const override;
 	const double get_min() const override;
 };

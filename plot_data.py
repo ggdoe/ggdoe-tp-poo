@@ -1,4 +1,5 @@
-# py plot_data.py slv-euler.data slv-rk4.data
+# py plot_data.py edo-euler.data edo-rk4.data
+# py plot_data.py euler.data rk4.data exact.data
 import sys
 import matplotlib.pyplot as plt
 import numpy as np
@@ -6,6 +7,7 @@ import numpy as np
 if len(sys.argv) <= 1:
     print("Usage : data are in ./data/")
     print("Usage : plot_data.py data1.ex data2.ex ...")
+    print("Exemple : py plot_data.py edo-euler.data edo-rk4.data")
     sys.exit(1)
 
 fig = plt.figure()

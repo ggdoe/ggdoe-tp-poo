@@ -20,10 +20,18 @@ int main()
 
 	pb = fb.get(2.0 * M_PI, 10e4);
 	// pb = fb.get(1, 10e4);
-	pb.save_in_file("slv-euler.data"); 		// data are saved in /data/ folder
+	
+	pb.save_in_file("edo-euler.data"); 		// file are saved in /data/ folder
 	pb.solve("euler");
-	pb.save_in_file("slv-rk4.data"); 		// data are saved in /data/ folder
+
+	pb.save_in_file("edo-rk4.data"); 		// file are saved in /data/ folder
 	pb.solve("rk4"); 
+
+	fb.set_equation([](double t){ return t;});
+	pb.save_in_file(".data"); // file save in data/ euler.data && rk4.data
+	
+	pb.set_f_exact([](double t){ return t*t/2;});
+	pb.solve_parallel();
 
 	return 0;
 }
