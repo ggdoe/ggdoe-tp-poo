@@ -12,7 +12,7 @@ public:
 	Discr_type choice;
 	Equation eq;
 	
-	Fabrique(const std::string discr_str);
+	Fabrique(const std::string &discr_str);
 	Problem get(double tmax, unsigned int size, double tmin = 0);
 
 	template<class Lambda>

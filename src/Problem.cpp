@@ -14,9 +14,23 @@ void Problem::save_in_file(std::string _filename){
 	filename = _filename; // if filename is empty no save
 }
 
-void Problem::solve(){
+void Problem::solve(const std::string &integrator){
 	Timer timer_boucle, timer_solve;
 	timer_solve.start();
+
+	switch(integrator){
+		case "euler":
+			break;
+		case "rk4":
+		case "":
+			break;
+		default:
+			std::cout << "solve(std::string) usage :" << std::endl;
+			return ;
+	}
+
+	// else if(integrator == "rk4")
+
 	Variable v(discr);
 	eq->compute_initial_condition(v);
 
@@ -27,7 +41,10 @@ void Problem::solve(){
 	timer_boucle.start();
 	for(double i = 0; i < discr->nb_points(); i++){
 		t += discr->get_pas(t);
-		eq->compute_by_integrator<My_Integrator>(t, discr->get_pas(t), v);
+		if (integrator == "euler")
+			eq->compute_by_integrator<EulerIntegrator>(t, discr->get_pas(t), v);
+		else if(integrator == "rk4")
+			eq->compute_by_integrator<My_Integrator>(t, discr->get_pas(t), v);
 		// eq.compute(t, 0.1, v);
 	}
 	timer_boucle.stop();

@@ -18,7 +18,7 @@ int main()
 
 	// fb.set_equation([](double t){ return t*t;});
 	fb.set_equation_diff([](double t, double y){ return y;});
-	
+
 	pb = fb.get(1.0, 10e4);
 	// pb.save_in_file("tt.data"); 
 	pb.solve(); //data are saved in /data/ folder

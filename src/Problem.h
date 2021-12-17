@@ -18,7 +18,7 @@ public:
 	Problem(Equation *_eq, ITimeDiscretization *_discr);
 	void save_in_file(std::string _filename);
 	~Problem();
-	void solve();
+	void solve(const std::string &integrator = "rk4");
 	void solve_parallel();
 };
 

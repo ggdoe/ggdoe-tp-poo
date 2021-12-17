@@ -1,6 +1,6 @@
 #include "Fabrique.h"
 
-Fabrique::Fabrique(const std::string discr_str)
+Fabrique::Fabrique(const std::string &discr_str)
 {
 	if(discr_str == "non_uniform")
 		choice = Discr_type::NonUniformTimeDiscretization;
