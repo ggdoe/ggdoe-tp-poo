@@ -29,9 +29,13 @@ int main()
 
 	fb.set_equation([](double t){ return t;});
 	pb.save_in_file(".data"); // file save in data/ euler.data && rk4.data
-	
 	pb.set_f_exact([](double t){ return t*t/2;});
 	pb.solve_parallel();
+
+	// fb.set_equation([](double t){ return exp(t);});
+	// pb.save_in_file(".data"); // file save in data/ euler.data && rk4.data
+	// pb.set_f_exact([](double t){ return exp(t);});
+	// pb.solve_parallel();
 
 	return 0;
 }
